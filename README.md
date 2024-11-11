@@ -38,10 +38,10 @@ _______
    ```bash
    python MagicCube.py
    ```
-  or
+   or
 
-  ```bash
-  python3 MagicCube.py
-  ```
+   ```bash
+   python3 MagicCube.py
+   ```
 
 4. Run notebook _local search_ (.ipynb) yang diinginkan

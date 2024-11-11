@@ -6,17 +6,42 @@ import matplotlib.pyplot as plt
 class MagicCube:
     def __init__(self, n):
         self.n = n
-        self.magicnumber = 315
-        self.totalelements = 109 # Jumlah elemen pada magic cube (baris, kolom, tiang, diagonal bidang, diagonal ruang)
-        self.targetvalue = self.magicnumber * self.totalelements # Buat rumus objective valuesnya nanti
-        self.cube = self.generateRandomStates()
+        self.magic_number = 315
+        self.total_elements = 109 # Jumlah elemen pada magic cube (baris, kolom, tiang, diagonal bidang, diagonal ruang)
+        self.target_value = self.magic_number * self.total_elements # Buat rumus objective valuesnya nanti
+        self.cube = self.generate_random_cube()
     
     def generateRandomStates(self):
         # Bikin cube dengan angka random dan ngga magic cube
         numbers = np.arange(1, self.n ** 3 + 1)
         np.random.shuffle(numbers)
-        randomCube = numbers.reshape((self.n, self.n, self.n))
-        return randomCube
+        random_cube = numbers.reshape((self.n, self.n, self.n))
+        return random_cube
+    
+    def generate_magic_cube_with_layers(self):
+        # Bikin cube dengan spesifikasi yang sesuai pada diagonal magic cube 5x5x5
+        magic_cube = np.zeros((self.n, self.n, self.n), dtype=int)
+        
+        l, r, c = 0, self.n // 2, self.n // 2
+        last = self.n ** 3
+
+        for i in range(last):
+            magic_cube[l, r, c] = i + 1
+            l -= 1
+            c -= 1
+            l, c = l % self.n, c % self.n
+            
+            if magic_cube[l, r, c] != 0:
+                r -= 1
+                c += 1
+                r, c = r % self.n, c % self.n
+                if magic_cube[l, r, c] != 0:
+                    r = (r + 1) % self.n
+                    l = (l + 2) % self.n
+
+        self.cube = magic_cube
+
+        return magic_cube
 
     def calculateElements(self):
         # Buat ngitung total baris, kolom, tiang, diagonal bidang, sama diagonal ruang cube
@@ -70,6 +95,9 @@ class MagicCube:
         x1, y1, z1 = pos1
         x2, y2, z2 = pos2
         self.cube[x1, y1, z1], self.cube[x2, y2, z2] = self.cube[x2, y2, z2], self.cube[x1, y1, z1]
+        x1, y1, z1 = pos1
+        x2, y2, z2 = pos2
+        self.cube[x1, y1, z1], self.cube[x2, y2, z2] = self.cube[x2, y2, z2], self.cube[x1, y1, z1]
     
     def isValid(self):
         # Buat cek dia magic cube apa ngga (objective function = 0)
@@ -108,3 +136,4 @@ class MagicCube:
 
         plt.tight_layout()
         plt.show()
+

@@ -1,4 +1,5 @@
-# **Tugas Besar 1 | Dasar Artificial Intelegensi | IF3070 K3 Kelompok 51**  
+# **Tugas Besar 1 | Dasar Artifisial Intelegensi | 
+IF3070 K3 Kelompok 51**  
 _______
 
 ## Deskripsi

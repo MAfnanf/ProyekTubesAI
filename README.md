@@ -22,4 +22,26 @@ _______
 | 3      | Gymnastiar Anwar       | 18222121      |
 | 4      | Fadian Alif Mahardika  | 18222124      |
 
+## How to Run:
+_______
 
+1. Clone Repository
+
+    ```bash
+    git clone https://github.com/MAfnanf/Local-Search-Algorithm-For-Diagonal-Magic-Cube.git
+    ```
+    
+2. Change to the correct directory (Local-Search-Algorithm-For-Diagonal-Magic-Cube/src)
+
+3. Run Command
+
+   ```bash
+   python MagicCube.py
+   ```
+  or
+
+  ```bash
+  python3 MagicCube.py
+  ```
+
+4. Run notebook _local search_ (.ipynb) yang diinginkan
